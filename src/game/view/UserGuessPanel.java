@@ -1,35 +1,56 @@
 package game.view;
 
+import java.awt.Color;
 import java.awt.event.*;
+
 import game.controller.GameController;
+
 import javax.swing.*;
 
 public class UserGuessPanel extends JPanel
 	{
 		private SpringLayout baseLayout;
 
+		private JTextArea showGuessArea;
+		private JScrollPane scrollPane;
+		private JButton clearGuesses;
+		
 		public UserGuessPanel(GameController baseController)
 			{
 				baseLayout = new SpringLayout();
-
+				
+				showGuessArea = new JTextArea();
+				scrollPane = new JScrollPane(showGuessArea);
+				clearGuesses = new JButton("Clear Guesses");
+				
 				buildPanel();
 				buildWindow();
-				//buildListeners();
+				buildListeners();
 			}
 
 		private void buildPanel()
 			{
+				setBackground(new Color(190, 234, 249));
 				setLayout(baseLayout);
+				
+				add(scrollPane);
+				add(clearGuesses);
 			}
 
 		private void buildWindow()
 			{
-
+				baseLayout.putConstraint(SpringLayout.NORTH, scrollPane, 10, SpringLayout.NORTH, this);
+				baseLayout.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, this);
+				baseLayout.putConstraint(SpringLayout.EAST, scrollPane, -10, SpringLayout.EAST, this);
+				baseLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -10, SpringLayout.NORTH, clearGuesses);
+				baseLayout.putConstraint(SpringLayout.EAST, clearGuesses, -10, SpringLayout.EAST, this);
+				baseLayout.putConstraint(SpringLayout.WEST, clearGuesses, 10, SpringLayout.WEST, this);
+				baseLayout.putConstraint(SpringLayout.SOUTH, clearGuesses, -10, SpringLayout.SOUTH, this);
 			}
 
 		private void buildListeners()
 			{
-				tempAdd.addActionListener(new ActionListener()
+				clearGuesses.addActionListener(new ActionListener()
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{

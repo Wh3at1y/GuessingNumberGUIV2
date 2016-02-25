@@ -1,7 +1,10 @@
 package game.view;
 
+import java.awt.Color;
 import java.awt.event.*;
+
 import game.controller.GameController;
+
 import javax.swing.*;
 
 public class UpdateUserPanel extends JPanel
@@ -19,6 +22,7 @@ public class UpdateUserPanel extends JPanel
 
 		private void buildPanel()
 			{
+				setBackground(new Color(198, 253, 255));
 				setLayout(baseLayout);
 			}
 
