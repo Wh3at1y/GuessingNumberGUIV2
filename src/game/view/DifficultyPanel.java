@@ -9,7 +9,9 @@ import javax.swing.*;
 
 public class DifficultyPanel extends JPanel
 	{
+		private GameController baseController;
 		private SpringLayout baseLayout;
+		private GUIFonts font;
 		
 		private JButton easyButton;
 		private JButton normalButton;
@@ -19,13 +21,25 @@ public class DifficultyPanel extends JPanel
 
 		public DifficultyPanel(GameController baseController)
 			{
+				this.baseController = baseController;
+				
 				baseLayout = new SpringLayout();
-
+				font = new GUIFonts();
+				
 				easyButton = new JButton("Easy");
+				easyButton.setFont(font.slimFont());
+				
 				normalButton = new JButton("Normal");
+				normalButton.setFont(font.slimFont());
+				
 				hardButton = new JButton("Hard");
+				hardButton.setFont(font.slimFont());
+				
 				extremeButton = new JButton("Extreme");
+				extremeButton.setFont(font.slimFont());
+				
 				impossibleButton = new JButton("Impossible.");
+				impossibleButton.setFont(font.impossibleFont());
 				
 				buildPanel();
 				buildWindow();
@@ -34,7 +48,7 @@ public class DifficultyPanel extends JPanel
 
 		private void buildPanel()
 			{
-				setBackground(new Color(187, 243, 185));
+				setBackground(new Color(190, 234, 249));
 				setLayout(baseLayout);
 				
 				add(easyButton);
@@ -74,7 +88,7 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							
+							baseController.getDisplayInfoPanel().setGameInfotext("Easy", "1-50");
 						}
 					});
 			}

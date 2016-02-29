@@ -1,16 +1,18 @@
 package game.view;
 
 import java.awt.Color;
-import java.awt.event.*;
-
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import game.controller.GameController;
-
 import javax.swing.*;
 
 public class OptionsPanel extends JPanel
 	{
-		private SpringLayout baseLayout;
+		private GameController baseController;
 		
+		private SpringLayout baseLayout;
+		private GUIFonts font;
+
 		private JCheckBox showHintBox;
 		private JCheckBox limitGuessesBox;
 		private JCheckBox hideGuessesBox;
@@ -18,13 +20,26 @@ public class OptionsPanel extends JPanel
 
 		public OptionsPanel(GameController baseController)
 			{
-				baseLayout = new SpringLayout();
-
-				showHintBox = new JCheckBox("Show Higher/Lower Hints");
-				limitGuessesBox = new JCheckBox("Limit Guesses");
-				hideGuessesBox = new JCheckBox("Hide Your Guesses");
-				showCounter = new JCheckBox("Hide the Guess Counter");
+				this.baseController = baseController;
 				
+				baseLayout = new SpringLayout();
+				font = new GUIFonts();
+
+				showHintBox = new JCheckBox("Show Guess Helper");
+				showHintBox.setSelected(true);
+				showHintBox.setFont(font.slimFont());
+				
+				limitGuessesBox = new JCheckBox("Limit Guesses");
+				limitGuessesBox.setFont(font.slimFont());
+				
+				hideGuessesBox = new JCheckBox("Show Your Guesses");
+				hideGuessesBox.setFont(font.slimFont());
+				hideGuessesBox.setSelected(true);
+				
+				showCounter = new JCheckBox("Show the Guess Counter");
+				showCounter.setFont(font.slimFont());
+				showCounter.setSelected(true);
+
 				buildPanel();
 				buildWindow();
 				buildListeners();
@@ -34,7 +49,7 @@ public class OptionsPanel extends JPanel
 			{
 				setBackground(new Color(198, 253, 255));
 				setLayout(baseLayout);
-				
+
 				add(showHintBox);
 				add(limitGuessesBox);
 				add(hideGuessesBox);
@@ -55,6 +70,37 @@ public class OptionsPanel extends JPanel
 
 		private void buildListeners()
 			{
+				showHintBox.addItemListener(new ItemListener()
+					{
+						public void itemStateChanged(ItemEvent checked)
+							{
+								if(showHintBox.isSelected())
+									baseController.getUpdateUserPanel().getUpdateUserText().setVisible(true);
+								else
+									baseController.getUpdateUserPanel().getUpdateUserText().setVisible(false);
+							}
+					});
 				
+				showCounter.addItemListener(new ItemListener()
+					{
+						public void itemStateChanged(ItemEvent checked)
+							{
+								if(showCounter.isSelected())
+									baseController.getUpdateUserPanel().getGuessCounterText().setVisible(true);
+								else
+									baseController.getUpdateUserPanel().getGuessCounterText().setVisible(false);
+							}
+					});
+				
+				hideGuessesBox.addItemListener(new ItemListener()
+					{
+						public void itemStateChanged(ItemEvent checked)
+							{
+								if(hideGuessesBox.isSelected())
+									baseController.getUserGuessPanel().getShowGuessArea().setVisible(true);
+								else
+									baseController.getUserGuessPanel().getShowGuessArea().setVisible(false);
+							}
+					});
 			}
 	}

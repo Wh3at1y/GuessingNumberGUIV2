@@ -71,4 +71,34 @@ public class GamePanel extends JPanel
 				baseLayout.putConstraint(SpringLayout.EAST, updateUserPanel, 0, SpringLayout.WEST, userGuessesPanel);
 
 			}
+
+		public DifficultyPanel getDiffPanel()
+			{
+				return diffPanel;
+			}
+
+		public UserInputPanel getUserInputPanel()
+			{
+				return userInputPanel;
+			}
+
+		public UserGuessPanel getUserGuessesPanel()
+			{
+				return userGuessesPanel;
+			}
+
+		public DisplayInfoPanel getDisplayInfoPanel()
+			{
+				return displayInfoPanel;
+			}
+
+		public OptionsPanel getOptionsPanel()
+			{
+				return optionsPanel;
+			}
+
+		public UpdateUserPanel getUpdateUserPanel()
+			{
+				return updateUserPanel;
+			}
 	}

@@ -23,4 +23,9 @@ public class GameFrame extends JFrame
 			this.setContentPane(basePanel);
 			this.setVisible(true);
 		}
+		
+		public GamePanel getBasePanel()
+		{
+			return basePanel;
+		}
 	}

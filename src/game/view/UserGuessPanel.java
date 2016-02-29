@@ -10,6 +10,7 @@ import javax.swing.*;
 public class UserGuessPanel extends JPanel
 	{
 		private SpringLayout baseLayout;
+		private GUIFonts font;
 
 		private JTextArea showGuessArea;
 		private JScrollPane scrollPane;
@@ -18,10 +19,16 @@ public class UserGuessPanel extends JPanel
 		public UserGuessPanel(GameController baseController)
 			{
 				baseLayout = new SpringLayout();
+				font = new GUIFonts();
 				
 				showGuessArea = new JTextArea();
+				showGuessArea.setText("Your Guesses:");
+				showGuessArea.setEditable(false);
+				showGuessArea.setFont(font.boldFont());
 				scrollPane = new JScrollPane(showGuessArea);
+				
 				clearGuesses = new JButton("Clear Guesses");
+				clearGuesses.setFont(font.slimFont());
 				
 				buildPanel();
 				buildWindow();
@@ -30,7 +37,7 @@ public class UserGuessPanel extends JPanel
 
 		private void buildPanel()
 			{
-				setBackground(new Color(190, 234, 249));
+				setBackground(new Color(198, 253, 255));
 				setLayout(baseLayout);
 				
 				add(scrollPane);
@@ -54,8 +61,13 @@ public class UserGuessPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							
+							showGuessArea.setText("Your Guesses: ");
 						}
 					});
 			}
+		
+		public JTextArea getShowGuessArea()
+		{
+			return showGuessArea;
+		}
 	}

@@ -10,6 +10,7 @@ import javax.swing.*;
 public class UserInputPanel extends JPanel
 	{
 		private SpringLayout baseLayout;
+		private GUIFonts font;
 		
 		private JButton enterAnswer;
 		private JTextField userInputField;
@@ -17,11 +18,12 @@ public class UserInputPanel extends JPanel
 		public UserInputPanel(GameController baseController)
 			{
 				baseLayout = new SpringLayout();
+				font = new GUIFonts();
 				
 				enterAnswer = new JButton("Enter Guess");
+				enterAnswer.setFont(font.impossibleFont());
 				
 				userInputField = new JTextField(2);
-				
 
 				buildPanel();
 				buildWindow();
@@ -30,7 +32,7 @@ public class UserInputPanel extends JPanel
 
 		private void buildPanel()
 			{
-				setBackground(new Color(156, 246, 210));
+				setBackground(new Color(190, 234, 249));
 				setLayout(baseLayout);
 				
 				add(enterAnswer);
