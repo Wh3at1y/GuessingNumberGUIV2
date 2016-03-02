@@ -12,6 +12,7 @@ public class DisplayInfoPanel extends JPanel
 		private JLabel spacerLabel;
 		private JLabel difficultyText;
 		private JLabel guessBetweenText;
+		private JLabel limiterGuessText;
 
 		public DisplayInfoPanel(GameController baseController)
 			{
@@ -27,6 +28,9 @@ public class DisplayInfoPanel extends JPanel
 				guessBetweenText = new JLabel("Numbers to guess between");
 				guessBetweenText.setFont(font.slimFont());
 				
+				limiterGuessText = new JLabel("Guess Limit: ");
+				limiterGuessText.setVisible(false);
+				limiterGuessText.setFont(font.slimFont());
 
 				buildPanel();
 				buildWindow();
@@ -40,6 +44,7 @@ public class DisplayInfoPanel extends JPanel
 				add(spacerLabel);
 				add(difficultyText);
 				add(guessBetweenText);
+				add(limiterGuessText);
 			}
 
 		private void buildWindow()
@@ -50,6 +55,8 @@ public class DisplayInfoPanel extends JPanel
 				baseLayout.putConstraint(SpringLayout.WEST, difficultyText, 0, SpringLayout.WEST, spacerLabel);
 				baseLayout.putConstraint(SpringLayout.NORTH, guessBetweenText, 15, SpringLayout.SOUTH, difficultyText);
 				baseLayout.putConstraint(SpringLayout.WEST, guessBetweenText, 10, SpringLayout.WEST, this);
+				baseLayout.putConstraint(SpringLayout.NORTH, limiterGuessText, 11, SpringLayout.SOUTH, guessBetweenText);
+				baseLayout.putConstraint(SpringLayout.WEST, limiterGuessText, 10, SpringLayout.WEST, this);
 			}
 
 		public void setGameInfotext( String difficultyText, String guessBetweenText)
@@ -57,4 +64,9 @@ public class DisplayInfoPanel extends JPanel
 				this.difficultyText.setText("Difficulty: " + difficultyText);
 				this.guessBetweenText.setText("Guess Between: " + guessBetweenText);
 			}
+		
+		public JLabel getLimitText()
+		{
+			return limiterGuessText;
+		}
 	}

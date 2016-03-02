@@ -89,7 +89,64 @@ public class DifficultyPanel extends JPanel
 						public void actionPerformed(ActionEvent clicked)
 						{
 							baseController.getDisplayInfoPanel().setGameInfotext("Easy", "1-50");
+							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 30");
+							setGameSettings(true, false, true, true);
+						}
+					});
+				
+				normalButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent clicked)
+						{
+							baseController.getDisplayInfoPanel().setGameInfotext("Normal", "1-100");
+							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 25");
+							setGameSettings(true, false, true, true);
+						}
+					});
+				
+				hardButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent clicked)
+						{
+							baseController.getDisplayInfoPanel().setGameInfotext("Hard", "1-300");
+							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 20");
+							setGameSettings(false, false, true, true);
+						}
+					});
+				
+				extremeButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent clicked)
+						{
+							baseController.getDisplayInfoPanel().setGameInfotext("Extreme", "1-1,000");
+							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 30");
+							setGameSettings(false, true, true, false);
+						}
+					});
+				
+				impossibleButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent clicked)
+						{
+							baseController.getDisplayInfoPanel().setGameInfotext("IMPOSSIBLE", "1-10,000");
+							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 50");
+							setGameSettings(false, true, false, false);
 						}
 					});
 			}
+		
+		/**
+		 * 
+		 * @param guessBox : Show Guess Helper
+		 * @param limitGuesses : Limit Guesses
+		 * @param showGuesses : Show Your Guesses
+		 * @param showGuessCounter : Show Guess Counter
+		 */
+		private void setGameSettings(boolean guessBox, boolean limitGuesses, boolean showGuesses, boolean showGuessCounter)
+		{
+			baseController.getOptionsPanel().getShowHintBox().setSelected(guessBox);
+			baseController.getOptionsPanel().getLimitGuessesBox().setSelected(limitGuesses);
+			baseController.getOptionsPanel().getHideGuessesBox().setSelected(showGuesses);
+			baseController.getOptionsPanel().getShowCounter().setSelected(showGuessCounter);
+		}
 	}

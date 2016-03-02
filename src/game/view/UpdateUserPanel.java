@@ -18,12 +18,9 @@ public class UpdateUserPanel extends JPanel
 				font = new GUIFonts();
 				
 				updateUserText = new JLabel("I am your guess helper!");
-				baseLayout.putConstraint(SpringLayout.NORTH, updateUserText, 10, SpringLayout.NORTH, this);
-				baseLayout.putConstraint(SpringLayout.WEST, updateUserText, 10, SpringLayout.WEST, this);
 				updateUserText.setFont(font.impossibleFont());
+				
 				showGuessCounterText = new JLabel("Amount of Guesses: 0");
-				baseLayout.putConstraint(SpringLayout.NORTH, showGuessCounterText, 6, SpringLayout.SOUTH, updateUserText);
-				baseLayout.putConstraint(SpringLayout.WEST, showGuessCounterText, 10, SpringLayout.WEST, this);
 				showGuessCounterText.setFont(font.impossibleFont());
 				
 				buildPanel();
@@ -41,7 +38,10 @@ public class UpdateUserPanel extends JPanel
 
 		private void buildWindow()
 			{
-
+				baseLayout.putConstraint(SpringLayout.NORTH, updateUserText, 10, SpringLayout.NORTH, this);
+				baseLayout.putConstraint(SpringLayout.WEST, updateUserText, 10, SpringLayout.WEST, this);
+				baseLayout.putConstraint(SpringLayout.NORTH, showGuessCounterText, 6, SpringLayout.SOUTH, updateUserText);
+				baseLayout.putConstraint(SpringLayout.WEST, showGuessCounterText, 10, SpringLayout.WEST, this);
 			}
 		
 		public JLabel getUpdateUserText()

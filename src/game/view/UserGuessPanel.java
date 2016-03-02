@@ -37,7 +37,7 @@ public class UserGuessPanel extends JPanel
 
 		private void buildPanel()
 			{
-				setBackground(new Color(198, 253, 255));
+				setBackground(new Color(190, 234, 249));
 				setLayout(baseLayout);
 				
 				add(scrollPane);

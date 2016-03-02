@@ -9,7 +9,7 @@ import javax.swing.*;
 public class OptionsPanel extends JPanel
 	{
 		private GameController baseController;
-		
+
 		private SpringLayout baseLayout;
 		private GUIFonts font;
 
@@ -21,21 +21,21 @@ public class OptionsPanel extends JPanel
 		public OptionsPanel(GameController baseController)
 			{
 				this.baseController = baseController;
-				
+
 				baseLayout = new SpringLayout();
 				font = new GUIFonts();
 
 				showHintBox = new JCheckBox("Show Guess Helper");
-				showHintBox.setSelected(true);
 				showHintBox.setFont(font.slimFont());
-				
+				showHintBox.setSelected(true);
+
 				limitGuessesBox = new JCheckBox("Limit Guesses");
 				limitGuessesBox.setFont(font.slimFont());
-				
+
 				hideGuessesBox = new JCheckBox("Show Your Guesses");
 				hideGuessesBox.setFont(font.slimFont());
 				hideGuessesBox.setSelected(true);
-				
+
 				showCounter = new JCheckBox("Show the Guess Counter");
 				showCounter.setFont(font.slimFont());
 				showCounter.setSelected(true);
@@ -74,33 +74,65 @@ public class OptionsPanel extends JPanel
 					{
 						public void itemStateChanged(ItemEvent checked)
 							{
-								if(showHintBox.isSelected())
+								if (showHintBox.isSelected())
 									baseController.getUpdateUserPanel().getUpdateUserText().setVisible(true);
 								else
 									baseController.getUpdateUserPanel().getUpdateUserText().setVisible(false);
 							}
 					});
-				
+
 				showCounter.addItemListener(new ItemListener()
 					{
 						public void itemStateChanged(ItemEvent checked)
 							{
-								if(showCounter.isSelected())
+								if (showCounter.isSelected())
 									baseController.getUpdateUserPanel().getGuessCounterText().setVisible(true);
 								else
 									baseController.getUpdateUserPanel().getGuessCounterText().setVisible(false);
 							}
 					});
-				
+
 				hideGuessesBox.addItemListener(new ItemListener()
 					{
 						public void itemStateChanged(ItemEvent checked)
 							{
-								if(hideGuessesBox.isSelected())
+								if (hideGuessesBox.isSelected())
 									baseController.getUserGuessPanel().getShowGuessArea().setVisible(true);
 								else
 									baseController.getUserGuessPanel().getShowGuessArea().setVisible(false);
 							}
 					});
+
+				limitGuessesBox.addItemListener(new ItemListener()
+					{
+						public void itemStateChanged(ItemEvent checked)
+							{
+								if (limitGuessesBox.isSelected())
+									baseController.getDisplayInfoPanel().getLimitText().setVisible(true);
+								else
+									baseController.getDisplayInfoPanel().getLimitText().setVisible(false);
+							}
+					});
 			}
+
+		public JCheckBox getShowHintBox()
+			{
+				return showHintBox;
+			}
+
+		public JCheckBox getLimitGuessesBox()
+			{
+				return limitGuessesBox;
+			}
+
+		public JCheckBox getHideGuessesBox()
+			{
+				return hideGuessesBox;
+			}
+
+		public JCheckBox getShowCounter()
+			{
+				return showCounter;
+			}
+
 	}
