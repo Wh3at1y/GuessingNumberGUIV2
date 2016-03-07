@@ -31,6 +31,7 @@ public class OptionsPanel extends JPanel
 
 				limitGuessesBox = new JCheckBox("Limit Guesses");
 				limitGuessesBox.setFont(font.slimFont());
+				limitGuessesBox.setSelected(false);
 
 				hideGuessesBox = new JCheckBox("Show Your Guesses");
 				hideGuessesBox.setFont(font.slimFont());

@@ -1,5 +1,6 @@
 package game.controller;
 
+import game.model.GenerateNumbers;
 import game.view.DifficultyPanel;
 import game.view.DisplayInfoPanel;
 import game.view.GameFrame;
@@ -11,15 +12,21 @@ import game.view.UserInputPanel;
 public class GameController
 	{
 		private GameFrame baseFrame;
+		private GenerateNumbers genNumber;
 		
 		public GameController()
 		{
 			baseFrame = new GameFrame(this);
+			genNumber = new GenerateNumbers();
 		}
 		public void start()
 		{
 		}
 		
+		public GenerateNumbers getGenNumbers()
+		{
+			return genNumber;
+		}
 		public DifficultyPanel getDiffPanel()
 		{
 			return baseFrame.getBasePanel().getDiffPanel();

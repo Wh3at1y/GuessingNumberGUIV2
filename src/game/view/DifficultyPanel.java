@@ -88,7 +88,8 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							baseController.getDisplayInfoPanel().setGameInfotext("Easy", "1-50");
+							System.out.println(baseController.getGenNumbers().generateEasy());
+							baseController.getDisplayInfoPanel().setGameInfotext("Easy", "0-50");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 30");
 							setGameSettings(true, false, true, true);
 						}
@@ -98,7 +99,7 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							baseController.getDisplayInfoPanel().setGameInfotext("Normal", "1-100");
+							baseController.getDisplayInfoPanel().setGameInfotext("Normal", "0-100");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 25");
 							setGameSettings(true, false, true, true);
 						}
@@ -108,7 +109,7 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							baseController.getDisplayInfoPanel().setGameInfotext("Hard", "1-300");
+							baseController.getDisplayInfoPanel().setGameInfotext("Hard", "0-300");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 20");
 							setGameSettings(false, false, true, true);
 						}
@@ -118,7 +119,7 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							baseController.getDisplayInfoPanel().setGameInfotext("Extreme", "1-1,000");
+							baseController.getDisplayInfoPanel().setGameInfotext("Extreme", "0-1,000");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 30");
 							setGameSettings(false, true, true, false);
 						}
@@ -128,7 +129,7 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							baseController.getDisplayInfoPanel().setGameInfotext("IMPOSSIBLE", "1-10,000");
+							baseController.getDisplayInfoPanel().setGameInfotext("IMPOSSIBLE", "0-10,000");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 50");
 							setGameSettings(false, true, false, false);
 						}
