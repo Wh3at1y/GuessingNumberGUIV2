@@ -1,6 +1,5 @@
 package game.view;
 
-import java.awt.event.*;
 import game.controller.GameController;
 import javax.swing.*;
 

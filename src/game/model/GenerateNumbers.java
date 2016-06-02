@@ -4,10 +4,15 @@ public class GenerateNumbers
 	{
 		private int generatedNumber;
 		
-		public int generateEasy()
+		private void generateEasy()
 		{
 			generatedNumber = 0;
 			generatedNumber = (int) (Math.random() * 51);
+		}
+		
+		public int getEasyNum()
+		{
+			generateEasy();
 			return generatedNumber;
 		}
 	}

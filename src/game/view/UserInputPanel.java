@@ -9,6 +9,7 @@ import javax.swing.*;
 
 public class UserInputPanel extends JPanel
 	{
+		private GameController baseController;
 		private SpringLayout baseLayout;
 		private GUIFonts font;
 		
@@ -17,6 +18,7 @@ public class UserInputPanel extends JPanel
 
 		public UserInputPanel(GameController baseController)
 			{
+				this.baseController = baseController;
 				baseLayout = new SpringLayout();
 				font = new GUIFonts();
 				
@@ -56,7 +58,7 @@ public class UserInputPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							
+							baseController.checkDifficulty();
 						}
 					});
 			}

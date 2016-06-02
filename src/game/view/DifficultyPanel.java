@@ -18,6 +18,12 @@ public class DifficultyPanel extends JPanel
 		private JButton hardButton;
 		private JButton extremeButton;
 		private JButton impossibleButton;
+		
+		private String difficulty;
+		private boolean guessBox;
+		private boolean limitGuesses;
+		private boolean showGuesses;
+		private boolean showGuessCounter;
 
 		public DifficultyPanel(GameController baseController)
 			{
@@ -88,10 +94,11 @@ public class DifficultyPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent clicked)
 						{
-							System.out.println(baseController.getGenNumbers().generateEasy());
+							System.out.println(baseController.getGenNumbers().getEasyNum());
 							baseController.getDisplayInfoPanel().setGameInfotext("Easy", "0-50");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 30");
 							setGameSettings(true, false, true, true);
+							difficulty = "easy";
 						}
 					});
 				
@@ -102,6 +109,7 @@ public class DifficultyPanel extends JPanel
 							baseController.getDisplayInfoPanel().setGameInfotext("Normal", "0-100");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 25");
 							setGameSettings(true, false, true, true);
+							difficulty = "normal";
 						}
 					});
 				
@@ -112,6 +120,7 @@ public class DifficultyPanel extends JPanel
 							baseController.getDisplayInfoPanel().setGameInfotext("Hard", "0-300");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 20");
 							setGameSettings(false, false, true, true);
+							difficulty = "hard";
 						}
 					});
 				
@@ -122,6 +131,7 @@ public class DifficultyPanel extends JPanel
 							baseController.getDisplayInfoPanel().setGameInfotext("Extreme", "0-1,000");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 30");
 							setGameSettings(false, true, true, false);
+							difficulty = "extreme";
 						}
 					});
 				
@@ -132,6 +142,7 @@ public class DifficultyPanel extends JPanel
 							baseController.getDisplayInfoPanel().setGameInfotext("IMPOSSIBLE", "0-10,000");
 							baseController.getDisplayInfoPanel().getLimitText().setText("Guess Limit: 50");
 							setGameSettings(false, true, false, false);
+							difficulty = "impossible";
 						}
 					});
 			}
@@ -145,9 +156,38 @@ public class DifficultyPanel extends JPanel
 		 */
 		private void setGameSettings(boolean guessBox, boolean limitGuesses, boolean showGuesses, boolean showGuessCounter)
 		{
+			this.guessBox = guessBox;
+			this.limitGuesses = limitGuesses;
+			this.showGuesses = showGuesses;
+			this.showGuessCounter = showGuessCounter;
 			baseController.getOptionsPanel().getShowHintBox().setSelected(guessBox);
 			baseController.getOptionsPanel().getLimitGuessesBox().setSelected(limitGuesses);
 			baseController.getOptionsPanel().getHideGuessesBox().setSelected(showGuesses);
 			baseController.getOptionsPanel().getShowCounter().setSelected(showGuessCounter);
 		}
+		
+		public String getDifficulty()
+		{
+			return difficulty;
+		}
+		
+		public boolean getGuessBox()
+		{
+			return guessBox;
+		}
+		
+		public boolean getLimitGuesses()
+			{
+				return limitGuesses;
+			}
+		
+		public boolean getShowGuesses()
+			{
+				return showGuesses;
+			}
+		
+		public boolean getGuessCounter()
+			{
+				return showGuessCounter;
+			}
 	}
